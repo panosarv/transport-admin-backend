@@ -1,0 +1,82 @@
+# ─── Python ────────────────────────────────────────────────────────────────────
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+
+# Pytest cache
+.pytest_cache/
+.tox/
+
+# Mypy cache
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pydantic v2 settings cache (if any)
+*.cache
+
+# ─── Virtual Environments ───────────────────────────────────────────────────────
+# (only if you ever use one locally)
+.venv/
+venv/
+ENV/
+env/
+
+# ─── FastAPI / Uvicorn ─────────────────────────────────────────────────────────
+# Uvicorn auto-reload temp files
+/*.reloadable
+
+# ─── Alembic ───────────────────────────────────────────────────────────────────
+# You generally want to keep migration scripts in source control,
+# but ignore __pycache__ inside them:
+alembic/versions/__pycache__/
+
+# ─── Environment Variables ─────────────────────────────────────────────────────
+# Your .env holds secrets—never commit it!
+.env
+
+# ─── IDE / Editor ───────────────────────────────────────────────────────────────
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# Emacs
+*~
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ─── OS Files ───────────────────────────────────────────────────────────────────
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
