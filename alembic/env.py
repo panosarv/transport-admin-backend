@@ -6,8 +6,11 @@ from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncEngine
 from alembic import context
-
-# allow `import app`
+from app.models.vehicle import Vehicle
+from app.models.role import Role
+from app.models.user import User  
+from app.models.company import Company  
+from app.models.booking import Booking
 sys.path.append(os.getcwd())
 
 from app.db.base import Base

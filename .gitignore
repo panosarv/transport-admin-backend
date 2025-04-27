@@ -1,0 +1,51 @@
+# Ignore Python cache files
+**/__pycache__/
+**/*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.pytest_cache/
+
+# Mypy cache
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Environment variables (secrets)
+.env
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Alembic migrations (if you choose not to track old revisions)
+alembic/versions/
+
+# IDE / editor directories
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
