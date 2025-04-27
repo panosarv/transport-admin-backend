@@ -6,6 +6,7 @@ class Token(BaseModel):
     token_type: str
 
 class TokenPayload(BaseModel):
-    sub: str
+    sub: int                
     role_id: Optional[int]
+    company_id: int          # NEW: the user’s company
     exp: int

@@ -5,13 +5,26 @@ class UserBase(BaseModel):
     username: str
     email: EmailStr
 
-class UserCreate(UserBase):
+class RegisterCompanyUser(UserBase):
+    """
+    Payload for the very first signup:
+    creates a new Company and an Admin user.
+    """
     password: str
-    role_id: Optional[int] = None  # default to None if not supplied
+    company_name: str
+
+class UserCreate(UserBase):
+    """
+    Payload for subsequent user creation by an Admin.
+    The company_id is taken from the current_user.
+    """
+    password: str
+    role_id: int
 
 class UserRead(UserBase):
     id: int
     role_id: int
+    company_id: int
 
     class Config:
         orm_mode = True
