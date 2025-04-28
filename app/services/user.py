@@ -1,14 +1,20 @@
+# File: app/services/user.py
+
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from app.models.user import User
 from app.schemas.user import UserCreate
 from app.core.security import get_password_hash
 
-async def get_user_by_username(db: AsyncSession, username: str):
+async def get_user_by_username(db: AsyncSession, username: str) -> User | None:
     result = await db.execute(select(User).where(User.username == username))
     return result.scalars().first()
 
-async def get_user_by_id(db: AsyncSession, user_id: int):
+async def get_user_by_email(db: AsyncSession, email: str) -> User | None:
+    result = await db.execute(select(User).where(User.email == email))
+    return result.scalars().first()
+
+async def get_user_by_id(db: AsyncSession, user_id: int) -> User | None:
     result = await db.execute(select(User).where(User.id == user_id))
     return result.scalars().first()
 
@@ -25,4 +31,3 @@ async def create_user(db: AsyncSession, user_in: UserCreate, company_id: int) ->
     await db.commit()
     await db.refresh(user)
     return user
-
