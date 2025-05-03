@@ -1,8 +1,9 @@
 from pydantic import BaseModel
-from datetime import datetime
-from typing import Optional
+from datetime import datetime, date
+from typing import Optional, Literal, List
 from app.models.booking import BookingStatus
 
+# Base fields
 class BookingBase(BaseModel):
     vehicle_id: int
     status: BookingStatus
@@ -10,15 +11,42 @@ class BookingBase(BaseModel):
     dropoff_time: Optional[datetime]
     origin: str
     destination: str
-    driver_id: Optional[int] = None  # ID of the driver assigned to the booking
+    price: int
 
 class BookingCreate(BookingBase):
     pass
 
 class BookingRead(BookingBase):
     id: int
-    user_id: int  # the driver
+    driver_id: int
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+# Listing filters
+class BookingFilter(BaseModel):
+    status: Optional[BookingStatus] = None
+    date_from: Optional[date] = None
+    date_to: Optional[date] = None
+
+# Reporting
+TimeframeLiteral = Literal['daily','weekly','monthly','yearly']
+
+class EarningsReport(BaseModel):
+    period: str
+    total: float
+
+class CountReport(BaseModel):
+    period: str
+    count: int
+
+class ReportParams(BaseModel):
+    timeframe: Optional[TimeframeLiteral] = None
+    year: Optional[int] = None
+    month: Optional[int] = None
+    day: Optional[date] = None
+
+type UpdateStatusLiteral = BookingStatus  
+class StatusUpdate(BaseModel):
+    status: UpdateStatusLiteral

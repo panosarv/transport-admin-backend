@@ -17,5 +17,5 @@ async def login(db: AsyncSession, username: str, password: str) -> str:
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    token_data = {"sub": user.id, "role_id": user.role_id, "company_id": user.company_id}
+    token_data = {"sub": str(user.id), "role_id": user.role_id, "company_id": user.company_id}
     return create_access_token(data=token_data)

@@ -20,6 +20,7 @@ class Booking(Base):
     origin = Column(String, nullable=False)
     destination = Column(String, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    price = Column(Integer, nullable=False)
 
     # Relationships
     driver = relationship("User", back_populates="bookings")

@@ -19,12 +19,14 @@ async def get_current_user(
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
+        
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
         token_data = TokenPayload(**payload)
-    except JWTError:
+    except JWTError as e:
+        print(f"JWTError: {e}")
         raise credentials_exception
 
-    user = await get_user_by_id(db, token_data.sub)
+    user = await get_user_by_id(db, int(token_data.sub))
     if user is None:
         raise credentials_exception
 
