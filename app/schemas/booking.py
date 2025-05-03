@@ -47,6 +47,6 @@ class ReportParams(BaseModel):
     month: Optional[int] = None
     day: Optional[date] = None
 
-type UpdateStatusLiteral = BookingStatus  
+UpdateStatusLiteral = Literal["upcoming","in_progress","completed"]  
 class StatusUpdate(BaseModel):
     status: UpdateStatusLiteral
