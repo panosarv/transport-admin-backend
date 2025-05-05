@@ -29,3 +29,24 @@ class UserRead(UserBase):
     class Config:
         from_attributes = True
         orm_mode = True
+
+class UserUpdate(BaseModel):
+    username: Optional[str] = None
+    email: Optional[EmailStr] = None
+    password: Optional[str] = None
+    role_id: Optional[int] = None
+
+    class Config:
+        from_attributes = True
+        orm_mode = True
+        populate_by_name = True
+
+class CompanyUserRead(UserBase):
+    id: int
+    role_id: int
+    company_id: int
+
+    class Config:
+        from_attributes = True
+        orm_mode = True
+        populate_by_name = True

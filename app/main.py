@@ -3,7 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers import auth
 from app.routers import bookings
 from app.routers import vehicles
-
+from app.routers import articles
+from app.routers import users 
 app = FastAPI(title="Transport Admin API")
 
 app.add_middleware(
@@ -17,3 +18,5 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(bookings.router)
 app.include_router(vehicles.router)
+app.include_router(articles.router)
+app.include_router(users.router)
